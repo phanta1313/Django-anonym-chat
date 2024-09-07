@@ -1,0 +1,5 @@
+django
+channels
+django-websockets
+python-dotenv
+daphne
