@@ -3,3 +3,5 @@ channels
 django-websockets
 python-dotenv
 daphne
+psycopg2-binary
+gunicorn
