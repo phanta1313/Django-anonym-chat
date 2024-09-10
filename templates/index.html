@@ -18,7 +18,7 @@
        
     </div>
     <script type="text/javascript">
-        let url = `ws://127.0.0.1:8000/ws/socket-server/`
+        let url = `wss://${window.location.host}/ws/`
 
         const chatSocket = new WebSocket(url)
 
