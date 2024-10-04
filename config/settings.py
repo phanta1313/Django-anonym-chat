@@ -1,7 +1,11 @@
 from pathlib import Path
 import os, dotenv
+from mongoengine import connect
 
 dotenv.load_dotenv()
+
+connect('mongodb', host='mongodb://localhost:27017/mongodb')
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

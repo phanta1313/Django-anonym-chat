@@ -43,5 +43,24 @@ class ChatConsumer(WebsocketConsumer):
         }))
 
     def disconnect(self, code):
-        Lobby.objects.filter(id__exact=self.room_id).delete()
+        Lobby.objects.filter(id__exact=self.room_id).update(members=F('members') - 1)
+        if Lobby.objects.get(id=self.room_id).members == 0:
+            Lobby.objects.filter(id__exact=self.room_id).delete()
         return super().disconnect(code)
+
+
+
+class GameConsumer(WebsocketConsumer):
+    def connect(self):
+        self.accept()
+        print('Connected')
+
+    def disconnect(self, close_code):
+        print(f'Disconnected with code {close_code}')
+
+    def receive(self, text_data):
+        print(f'Received data: {text_data}')
+        
+
+        
+    
